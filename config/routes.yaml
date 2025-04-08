@@ -8,3 +8,11 @@ controllers:
 home:
     path: /home
     controller: App\Controller\HomeController::sayHello
+
+redirectToRoute:
+    path: /redirecttoroute
+    controller: App\Controller\HomeController::sayBye
+
+redirectToLinkedin:
+    path: /redirecttolinkedin
+    controller: App\Controller\HomeController::redirecttolinkedin

@@ -5,15 +5,23 @@
 namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class HomeController{
+class HomeController extends AbstractController {
 
     /* La route va permettre d'accéder au controleur, en accédant particulièrement 
        à une méthode du controleur.
        On va créer cela dans config/routes.yaml
     */
      public function sayHello(){
-
         return new Response("Hello World");
+    }
+
+    public function sayBye(){
+        return $this->redirectToRoute('home');
+    }
+
+    public function redirectToLinkedin(){
+        return $this->redirect("https://linkedin.com/");
     }
 }
