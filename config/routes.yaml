@@ -16,3 +16,11 @@ redirectToRoute:
 redirectToLinkedin:
     path: /redirecttolinkedin
     controller: App\Controller\HomeController::redirecttolinkedin
+
+showTemplate:
+    path: /showtemplate
+    controller: App\Controller\HomeController::showTemplate
+
+products:
+    path: /products
+    controller: App\Controller\HomeController::showProducts
