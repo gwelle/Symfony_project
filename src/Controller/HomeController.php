@@ -8,7 +8,7 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\Routing\Attribute\Route;
 class HomeController extends AbstractController {
 
     /* La route va permettre d'accéder au controleur, en accédant particulièrement
@@ -33,15 +33,19 @@ class HomeController extends AbstractController {
         return $this->render('base.html.twig', []);
     }
 
-    
     public function showproducts(Request $request){
 
-        //$params = $request->query->get('product');
         $params = $request->query->all();
         dump($params);
 
         $products = ["iPhone", "Samsung", "Xiaomi", "Oppo", "OnePlus"];
         return $this->render('products.html.twig', ['products' => $products ]);
-    
+    }
+
+    #[Route('/articles', name: 'articles')]
+    public function showArticles(){
+        $articles = ["iPhone", "Samsung", "Xiaomi", "Oppo", "OnePlus"];
+        dump($articles);
+        return $this->render('articles.html.twig', ['articles' => $articles]);
     }
 }
