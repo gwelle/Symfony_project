@@ -6,18 +6,33 @@ use App\Form\CustomerType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Customer;
 
 final class CustomerController extends AbstractController
 {
     // On va créer une route pour le formulaire
     // On va créer une méthode pour le formulaire
     #[Route('/form_customer', name: 'form_customer')]
-    public function index(): Response
+    public function index(Request $request): Response
     {
 
-        // On va créer un formulaire pour l'entité Customer
-        $customerForm = $this->createForm(CustomerType::class);
+        // On va créer une instance de l'entité Customer
+        $customer = new Customer();
 
+        // On va créer un formulaire pour l'entité Customer
+        $customerForm = $this->createForm(CustomerType::class, $customer);
+
+        // On va gérer la requête
+        $customerForm->handleRequest($request);
+
+        // On va vérifier si le formulaire est soumis et valide
+        if($customerForm->isSubmitted() && $customerForm->isValid()){
+            
+            // On va afficher les données du formulaire
+            dump($request->request->all()); 
+        }
+        
         return $this->render('customer/index.html.twig', [
             'customerForm' => $customerForm->createView() // On va créer une vue pour le formulaire
         ]);
