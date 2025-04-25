@@ -8,13 +8,14 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Customer;
+use Doctrine\Persistence\ManagerRegistry;
 
 final class CustomerController extends AbstractController
 {
     // On va créer une route pour le formulaire
     // On va créer une méthode pour le formulaire
     #[Route('/form_customer', name: 'form_customer')]
-    public function index(Request $request): Response
+    public function index(Request $request, ManagerRegistry $doctrine): Response
     {
 
         // On va créer une instance de l'entité Customer
@@ -28,7 +29,21 @@ final class CustomerController extends AbstractController
 
         // On va vérifier si le formulaire est soumis et valide
         if($customerForm->isSubmitted() && $customerForm->isValid()){
-            dump($request->request->all()); 
+
+            // On va récupérer les données du formulaire
+            $customer = $customerForm->getData();
+
+            // On va récupérer le manager
+            $entityManager = $doctrine->getManager();
+
+            // On va persister l'entité Customer
+            $entityManager->persist($customer);
+
+            // On va flush l'entité Customer
+            $entityManager->flush();
+
+            // On va rediriger vers la page d'accueil
+            return $this->redirectToRoute('home');
         }
         
         return $this->render('customer/index.html.twig', [
