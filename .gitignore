@@ -10,3 +10,6 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+.DS_Store
+public/.DS_Store

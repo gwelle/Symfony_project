@@ -1,6 +1,10 @@
 twig:
     file_name_pattern: '*.twig'
 
+    #on indique à twig que nous voulons utiliser un template bootsrap
+    form_themes: ['bootstrap_5_layout.html.twig'] 
+
+
 when@test:
     twig:
         strict_variables: true

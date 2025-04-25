@@ -28,8 +28,6 @@ final class CustomerController extends AbstractController
 
         // On va vérifier si le formulaire est soumis et valide
         if($customerForm->isSubmitted() && $customerForm->isValid()){
-            
-            // On va afficher les données du formulaire
             dump($request->request->all()); 
         }
         
