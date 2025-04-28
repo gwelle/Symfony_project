@@ -21,16 +21,20 @@ class CustomerType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Entrez votre nom',
                     'class' => 'form-control'
-                ]
+                ],
+                'required' => false,
             ])
             ->add('firstName',TextType::class, [
                 'label' => 'Prénom',
                 'attr' => [
                     'placeholder' => 'Entrez votre prénom',
                     'class' => 'form-control'
-                ]
+                ],
+                'required' => false,
             ])
-            ->add('email',EmailType::class)
+            ->add('email',EmailType::class,[
+                'required' => false
+            ])
             ->add('Valider', SubmitType::class)
         ;
     }

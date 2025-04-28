@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CustomerRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CustomerRepository::class)]
 class Customer
@@ -13,12 +14,49 @@ class Customer
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotNull(
+        message: 'Name cannot be null',
+        groups: ['create', 'update'],
+    )]
+    #[Assert\Length(
+        min: 2,
+        max: 30,
+        minMessage: 'Name must be at least {{ limit }} characters long',
+        maxMessage: 'Name cannot be longer than {{ limit }} characters',
+        groups: ['create', 'update'],
+    )]
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+    #[Assert\NotNull(
+        message: 'Name cannot be null',
+        groups: ['create', 'update'],
+    )]
+    #[Assert\Length(
+        min: 2,
+        max: 30,
+        minMessage: 'Name must be at least {{ limit }} characters long',
+        maxMessage: 'Name cannot be longer than {{ limit }} characters',
+        groups: ['create', 'update'],
+    )]
     #[ORM\Column(length: 255)]
     private ?string $firstName = null;
 
+    #[Assert\NotNull(
+        message: 'Name cannot be null',
+        groups: ['create', 'update'],
+    )]
+    #[Assert\Length(
+        min: 2,
+        max: 30,
+        minMessage: 'Name must be at least {{ limit }} characters long',
+        maxMessage: 'Name cannot be longer than {{ limit }} characters',
+        groups: ['create', 'update'],
+    )]
+    #[Assert\Email(
+        message: 'The email "{{ value }}" is not a valid email.',
+        groups: ['create', 'update'],
+    )]
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 

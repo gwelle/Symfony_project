@@ -4,7 +4,7 @@
 
 {% block body %}
 
-{{ currentDate }}
+{{ currentDate|date('d/m/Y') }}
 
 {{ form(customerForm) }}
 {% endblock %}
