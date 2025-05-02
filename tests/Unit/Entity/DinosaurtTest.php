@@ -3,24 +3,28 @@
 namespace App\Tests\Unit\Entity;
 
 use PHPUnit\Framework\TestCase;
+use App\Entity\Dinosaur;
+use Symfony\Component\Validator\Constraints\Length;
 
 class DinosaurtTest extends TestCase
 {
-    /**
-     * @test("test with assertEquals")
-     */
-    public function testItWorks(): void
+    public function testCanGetAndSetData(): void
+    
     {
-        //self::assertEquals(42, 42);
-        self::assertEquals('42', 42); // 42 == '42'
-    }
+        // Create a new Dinosaur object
+    
+        $dinosaur = new Dinosaur(
+            name: 'Big Eaty',
+            genus: 'Tyrannosaurus',
+            length: 15,
+            enclosure: 'Paddock A',
+        );
 
-    /**
-     * @test("test with assertSame")
-     */
-    public function testTtWorksTheSame():void
-    {
-        //self::assertSame(42, 42);
-        self::assertSame('42', 42); // 42 === '42'
+        self::assertGreaterThan(10, $dinosaur->getLength(), 'Length should be greater than 10');
+
+        self::assertSame('Big Eaty', $dinosaur->getName());
+        self::assertSame('Tyrannosaurus', $dinosaur->getGenus());
+        self::assertSame(15, $dinosaur->getLength());
+        self::assertSame('Paddock A', $dinosaur->getEnclosure());
     }
 }

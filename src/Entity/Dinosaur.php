@@ -22,6 +22,23 @@ class Dinosaur
     #[ORM\Column(length: 255)]
     private ?string $enclosure = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $genus = null;
+
+    /**
+     * Dinosaur constructor.
+     * @param string $name
+     * @param string $genus
+     * @param int $length
+     * @param string $enclosure
+     */
+    public function __construct(string $name, string $genus, int $length, string $enclosure) {
+        $this->name = $name;
+        $this->length = $length;
+        $this->enclosure = $enclosure;
+        $this->genus = $genus;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +76,18 @@ class Dinosaur
     public function setEnclosure(string $enclosure): static
     {
         $this->enclosure = $enclosure;
+
+        return $this;
+    }
+
+    public function getGenus(): ?string
+    {
+        return $this->genus;
+    }
+
+    public function setGenus(string $genus): static
+    {
+        $this->genus = $genus;
 
         return $this;
     }
