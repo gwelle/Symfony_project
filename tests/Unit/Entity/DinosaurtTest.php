@@ -31,10 +31,39 @@ class DinosaurtTest extends TestCase
     // Write a test for the Feature
     public function testDinosaurOver10MetersOrGreaterIsLarge():void {
         
-        $dino = new Dinosaur(name: 'Big Rex', genus: '', length: 10, enclosure:'');
+        $dino = new Dinosaur(
+            name: 'Big Rex',
+            genus: '',
+            length: 10,
+            enclosure:''
+        );
 
         //  Run the test and watch it fail
         self::assertSame('Large', $dino->getSizeDescription(),
          'Expected size description to be "Large" for length 15');
+    }
+
+    public function testDinoBetween5And9MetersIsMedium(): void
+    {
+        $carnivor = new Dinosaur(
+            name: 'Big Carnivor',
+            genus: '',
+            length: 5,
+            enclosure: '',
+        );
+        self::assertSame('Medium', $carnivor->getSizeDescription(),
+        'This is supposed to be a medium Dinosaur');
+    }
+
+    public function testDinoUnder5MetersIsSmall(): void
+    {
+        $herbivor = new Dinosaur(
+            name: 'Big Herbivor',
+            genus: '',
+            length: 4,
+            enclosure: '',
+        );
+        self::assertSame('Small', $herbivor->getSizeDescription(),
+        'This is supposed to be a small Dinosaur');
     }
 }

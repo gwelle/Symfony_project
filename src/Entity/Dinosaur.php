@@ -95,7 +95,16 @@ class Dinosaur
     // Enable to write simple code to make it pass
     public function getSizeDescription(): string
     {
-        //return 'Large';
-        return $this->length >= 10 ? 'Large' : 'Small';
+        if ($this->length >= 10) {
+            return 'Large';
+        } elseif ($this->length < 5) {
+            return 'Small';
+        } elseif ($this->length < 10) {
+            return 'Medium';
+        }
+        else {
+            return 'Unknown';
+        }
+
     }
 }

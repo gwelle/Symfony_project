@@ -2,19 +2,36 @@
 
 {% block title %}Hello DinosaurController!{% endblock %}
 
+
 {% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/guillaumewelle/Documents/SymfonyProjects/sf_init/src/Controller/DinosaurController.php</code></li>
-        <li>Your template at <code>/Users/guillaumewelle/Documents/SymfonyProjects/sf_init/templates/dinosaur/index.html.twig</code></li>
-    </ul>
+<div class="container volcano mt-4" style="flex-grow: 1;">
+    <div class="dino-stats-container mt-2 p-3">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Size Description</th>
+                    <th>Enclosure</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for dino in dinosaurs %}
+                <tr>
+                    <td>{{ dino.name }}</td>
+                    <td>{{ dino.enclosure }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 </div>
 {% endblock %}
+
+
+
+
