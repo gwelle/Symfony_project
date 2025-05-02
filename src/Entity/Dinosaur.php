@@ -91,4 +91,11 @@ class Dinosaur
 
         return $this;
     }
+
+    // Enable to write simple code to make it pass
+    public function getSizeDescription(): string
+    {
+        //return 'Large';
+        return $this->length >= 10 ? 'Large' : 'Small';
+    }
 }
