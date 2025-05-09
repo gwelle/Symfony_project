@@ -13,3 +13,5 @@
 
 .DS_Store
 public/.DS_Store
+.env.test
+.phpunit.result.cache
